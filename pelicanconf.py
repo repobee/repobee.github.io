@@ -25,6 +25,9 @@ LINKS = (
     ("RepoBee Documentation", "https://repobee.readthedocs.io"),
 )
 
+STATIC_PATHS = ["extra/CNAME"]
+EXTRA_PATH_METADATA = {"extra/CNAME": {"path": "CNAME"}}
+
 # Social widget
 # SOCIAL = (("You can add links in your config file", "#"), ("Another social link", "#"))
 
