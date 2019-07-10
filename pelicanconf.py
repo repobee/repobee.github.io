@@ -25,6 +25,10 @@ LINKS = (
     ("RepoBee Documentation", "https://repobee.readthedocs.io"),
 )
 
+SOCIAL = (
+    ("GitHub", "https://github.com/repobee/repobee"),
+)
+
 STATIC_PATHS = ["extra/CNAME"]
 EXTRA_PATH_METADATA = {"extra/CNAME": {"path": "CNAME"}}
 
