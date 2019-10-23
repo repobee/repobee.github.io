@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
         <title>RepoBee - Authors</title>
-        <link rel="stylesheet" href="https://repobee.org/theme/css/main.css" />
+        <meta charset="utf-8" />
+        <link href="https://repobee.org/theme/css/main.css" rel="stylesheet"/>
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://repobee.org/">RepoBee </a></h1>
-                <nav><ul>
-                    <li><a href="https://repobee.org/">About RepoBee</a></li>
-                    <li><a href="https://repobee.org/pages/contact.html">Contact</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
 
-<section id="content" class="body">
+<div class="grid-container">
+    <header id="banner" class="row-item">
+            <a href="https://repobee.org/">
+            <img class="site-banner" src="/images/RepoBee_large-black.png">
+</a>
+    </header><!-- /#banner -->
+    <nav id="menu" class="middle-row-item"><ul>
+        <li><a href="https://repobee.org/">About RepoBee</a></li>
+        <li><a href="https://repobee.org/pages/contact.html">Contact</a></li>
+    </ul>
+        <a class="social" href="https://github.com/repobee/repobee">
+            <img src="https://repobee.org/theme/images/icons/github.png" alt="RepoBee GitHub link">
+        </a>
+        <a class="social" href="https://repobee.readthedocs.io">
+            <img src="https://repobee.org/theme/images/logo-dark.png">
+        </a>
+
+	</nav><!-- /#menu -->
+    <div class="primary-content middle-columns-content">
     <h1>Authors on RepoBee</h1>
     <ul>
     </ul>
-</section>
-
-        <section id="extras" class="body">
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
+    </div>
+    <footer id="contentinfo" class="middle-row-item">
+            <address id="about" class="vcard body">
+            Site built with <a href="http://getpelican.com/">Pelican</a> •
+            © 2019 by Simon Larsén • Contact at
+            <a href="mailto:slarse@kth.se">slarse@kth.se</a>
+            </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+</div>
 </body>
 </html>
