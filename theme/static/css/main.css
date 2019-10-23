@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Montserrat";
+}
+
+p,a {
+    font-family: "OpenSans";
+}
+
 a {
     color: #607D8B;
 }
@@ -6,6 +24,7 @@ footer {
     background: #B3E5FC;
     border-radius: 5px;
     padding: 5px;
+    text-align: center;
 }
 
 #banner {
