@@ -20,6 +20,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 SITE_BANNER = "/images/RepoBee_large-black.png"
+THEME = "theme"
 
 GITHUB_LINK = "https://github.com/repobee/repobee"
 RTD_LINK = "https://repobee.readthedocs.io"
