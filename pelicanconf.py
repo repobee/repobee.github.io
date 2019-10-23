@@ -19,21 +19,16 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (
-    ("RepoBee on GitHub", "https://github.com/repobee/repobee"),
-    ("RepoBee Documentation", "https://repobee.readthedocs.io"),
-)
+SITE_BANNER = "/images/RepoBee_large-black.png"
 
-SOCIAL = (
-    ("GitHub", "https://github.com/repobee/repobee"),
-)
+GITHUB_LINK = "https://github.com/repobee/repobee"
+RTD_LINK = "https://repobee.readthedocs.io"
 
-STATIC_PATHS = ["extra/CNAME"]
+STATIC_PATHS = ["extra/CNAME", "images/RepoBee_large-black.png", "favicon.ico"]
 EXTRA_PATH_METADATA = {"extra/CNAME": {"path": "CNAME"}}
 
 # Social widget
-# SOCIAL = (("You can add links in your config file", "#"), ("Another social link", "#"))
+SOCIAL = (("You can add links in your config file", "#"), ("Another social link", "#"))
 
 DEFAULT_PAGINATION = 10
 
