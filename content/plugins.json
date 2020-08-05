@@ -1,0 +1,52 @@
+{
+    "junit4": {
+        "description": "Plugin for RepoBee that runs JUnit4 on cloned repos",
+        "url": "https://github.com/repobee/repobee-junit4",
+        "versions": {
+            "v0.8.2": {},
+            "v0.8.1": {},
+            "v0.8.0": {},
+            "v0.7.0": {},
+            "v0.6.1": {},
+            "v0.6.0": {},
+            "v0.5.0": {},
+            "v0.4.1": {},
+            "v0.4.0": {},
+            "v0.3.1": {},
+            "v0.3.0": {},
+            "v0.2.1": {},
+            "v0.2.0": {},
+            "v0.1.3": {},
+            "v0.1.2": {},
+            "v0.1.1": {},
+            "v0.1.0": {}
+        }
+    },
+    "feedback": {
+        "description": "A RepoBee plugin for opening feedback issues in on student issue trackers",
+        "url": "https://github.com/repobee/repobee-feedback",
+        "versions": {
+            "v0.5.0": {},
+            "v0.4.0": {},
+            "v0.3.2": {},
+            "v0.3.1": {},
+            "v0.3.0": {},
+            "v0.2.0": {},
+            "v0.1.0": {}
+        }
+    },
+    "csvgrades": {
+        "description": "A plugin for RepoBee that parses the JSON file produced by list-issues to report grades into a CSV file",
+        "url": "https://github.com/repobee/repobee-csvgrades",
+        "versions": {
+            "v0.1.0": {}
+        }
+    },
+    "sanitizer": {
+        "description": "A plugin for sanitizing master repositories before distribution to students",
+        "url": "https://github.com/repobee/repobee-sanitizer",
+        "versions": {
+            "bcab711": {}
+        }
+    }
+}
