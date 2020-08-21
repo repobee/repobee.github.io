@@ -2,6 +2,7 @@ Title: About RepoBee
 URL:
 Save_as: index.html
 Author: Simon Larsén
+Sortorder: 1
 
 RepoBee is an open source CLI tool that enables teachers to administrate large
 amounts of Git repositories on the GitHub and GitLab platforms. It automates
