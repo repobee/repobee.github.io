@@ -25,8 +25,18 @@ THEME = "theme"
 GITHUB_LINK = "https://github.com/repobee/repobee"
 RTD_LINK = "https://repobee.readthedocs.io"
 
-STATIC_PATHS = ["extra/CNAME", "images/RepoBee_large-black.png", "favicon.ico", "plugins.json"]
-EXTRA_PATH_METADATA = {"extra/CNAME": {"path": "CNAME"}}
+STATIC_PATHS = [
+    "extra/CNAME",
+    "images/RepoBee_large-black.png",
+    "favicon.ico",
+    "extra/plugins.json",
+    "extra/install.sh",
+]
+EXTRA_PATH_METADATA = {
+    "extra/CNAME": {"path": "CNAME"},
+    "extra/plugins.json": {"path": "plugins.json"},
+    "extra/install.sh": {"path": "install.sh"},
+}
 
 # Social widget
 SOCIAL = (("You can add links in your config file", "#"), ("Another social link", "#"))
