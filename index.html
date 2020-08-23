@@ -18,7 +18,6 @@
     </header><!-- /#banner -->
     <nav id="menu" class="middle-row-item"><ul>
         <li class="active"><a href="https://repobee.org/">About RepoBee</a></li>
-        <li><a href="https://repobee.org/pages/install.html">Install</a></li>
         <li><a href="https://repobee.org/pages/contact.html">Contact</a></li>
     </ul>
         <a class="social" href="https://github.com/repobee/repobee">
@@ -41,6 +40,30 @@ plugins written in Python.</p>
 <p>To learn more about RepoBee, head over to the <a href="https://github.com/repobee/repobee">GitHub
 page</a>, or maybe strike directly for the
 <a href="https://repobee.readthedocs.io">documentation over on ReadTheDocs</a>.</p>
+<h2>Install</h2>
+<p>Installing RepoBee is simple, just execute the install script!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># for bash</span>
+$ bash &lt;<span class="o">(</span>curl -s https://repobee.org/install.sh<span class="o">)</span>
+
+<span class="c1"># for zsh</span>
+$ zsh &lt;<span class="o">(</span>curl -s https://repobee.org/install.sh<span class="o">)</span>
+</code></pre></div>
+
+
+<p>Follow the instructions from the install script and you should be good to go.
+It will install RepoBee into the <code>~/.repobee</code> directory for you. Visit <a href="https://repobee.readthedocs.io/en/stable/install.html">the
+install documentation</a>
+for more elaborate instructions.</p>
+<blockquote>
+<p><strong>Note:</strong> Even if your primary shell is not <code>bash</code> or <code>zsh</code>, you need to
+install RepoBee with one of them. Then you can execute RepoBee with most
+shells.</p>
+</blockquote>
+<h2>Uninstall</h2>
+<p>Simply remove the <code>~/.repobee</code> directory. Depending on if you chose to modify
+your <code>.bashrc</code> or <code>.zshrc</code> or similar during install, or have done so manually,
+you may also need to remove a few lines from these files to remove all traces
+of RepoBee.</p>
 
     </div>
     <footer id="contentinfo" class="middle-row-item">
