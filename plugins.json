@@ -42,7 +42,7 @@
         "description": "A plugin for sanitizing master repositories before distribution to students",
         "url": "https://github.com/repobee/repobee-sanitizer",
         "versions": {
-            "bcab711": {}
+            "v0.1.0": {}
         }
     }
 }
