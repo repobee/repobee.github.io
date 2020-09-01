@@ -26,6 +26,9 @@ RepoBee supports most UNIX-like environments. That includes **macOS**,
 **Linux** distributions. Other UNIX-like environments may work, but they are
 not officially supported.
 
+> **Upgrading from RepoBee 2.x?** [Please see the v3.0.1 release notes before
+> proceeding](https://github.com/repobee/repobee/releases/tag/v3.0.1)
+
 Installing RepoBee is simple, just execute the install script!
 
 ```bash
