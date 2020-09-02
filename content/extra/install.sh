@@ -1,6 +1,10 @@
 #! /bin/bash
 
-REPOBEE_INSTALL_DIR="$HOME/.repobee"
+if [ -z "$REPOBEE_INSTALL_DIR" ]; then
+    REPOBEE_INSTALL_DIR="$HOME/.repobee"
+fi
+
+echo "Using install dir '$REPOBEE_INSTALL_DIR'"
 REPOBEE_BIN_DIR="$REPOBEE_INSTALL_DIR/bin"
 REPOBEE_REPO_DIR="$REPOBEE_INSTALL_DIR/repobee_git"
 REPOBEE_HTTPS_URL="https://github.com/repobee/repobee"
@@ -16,6 +20,8 @@ REPOBEE_PYTHON="$VENV_DIR/bin/python"
 REPOBEE_COMPLETION="$REPOBEE_INSTALL_DIR/completion"
 REPOBEE_BASH_COMPLETION="$REPOBEE_COMPLETION/bash_completion.sh"
 REGISTER_PYTHON_ARGCOMPLETE="$REPOBEE_INSTALL_DIR/env/bin/register-python-argcomplete"
+
+MIN_PYTHON_VERSION=6
 
 function install() {
     version=$1
@@ -37,7 +43,7 @@ function check_prerequisites() {
         echo "See https://www.python.org/downloads/ for a Python installer."
         exit 1
     else
-        echo "Found $installed_python executable"
+        echo "Found appropriate Python executable: $installed_python"
     fi
 
     git --version &> /dev/null
@@ -55,7 +61,9 @@ function install_repobee() {
     version=$1
     echo "Installing RepoBee at $REPOBEE_INSTALL_DIR"
 
-    $(find_python) -m venv "$VENV_DIR" &> /dev/null || {
+    # virtualenv works better in CI as it properly copies pip from another
+    # virtualenv while venv doesn't appear to do that. So we try both.
+    $(find_python) -m virtualenv "$VENV_DIR" &> /dev/null || $(find_python) -m venv "$VENV_DIR" &> /dev/null || {
         printf "\nFailed to create a virtual environment for RepoBee.\n"
         echo "This is typically caused by the venv package not being installed."
         printf "If you run Ubuntu/Debian, try running the following commands:\n\n"
@@ -65,6 +73,7 @@ function install_repobee() {
         printf "\nThen re-execute this script."
         exit 1
     }
+
     source "$REPOBEE_ENV_ACTIVATE"
     ensure_pip_installed
 
@@ -84,14 +93,35 @@ function install_repobee() {
 }
 
 function find_python() {
-    for python_version in "3.6" "3.7" "3.8"; do
-        python_cmd="python$python_version"
-        $python_cmd --version &> /dev/null
-        if [ $? = 0 ]; then
-            echo $python_cmd
-            break
+    # Find an appropriate python executable
+    for exec_suffix in "3.9" "3.8" "3.7" "3.6" "3" ""; do
+        python_exec="python$exec_suffix"
+        minor_version=$(get_minor_python3_version "$python_exec")
+        if [ "$minor_version" -ge "$MIN_PYTHON_VERSION" ]; then
+            echo "$python_exec"
+            return
         fi
     done
+}
+
+function get_minor_python3_version() {
+    # echo the minor version number from the given Python executable, or -1 if
+    # the executable does not exist or is not Python 3
+    python_executable=$1
+    if ! "$python_executable" -V &> /dev/null; then
+        echo -1
+        return
+    fi
+
+    # python2 prints the version on stderr, hence the 2>&1 redirect
+    major=$("$python_executable" 2>&1 -V | grep -o '[0-9]\+' | sed -n 1p)
+    minor=$("$python_executable" 2>&1 -V | grep -o '[0-9]\+' | sed -n 2p)
+
+    if [ "$major" -ne 3 ]; then
+        echo -1
+        return
+    fi
+    echo "$minor"
 }
 
 function pip_install_quiet_failfast() {
