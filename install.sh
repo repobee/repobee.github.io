@@ -24,14 +24,14 @@ REGISTER_PYTHON_ARGCOMPLETE="$REPOBEE_INSTALL_DIR/env/bin/register-python-argcom
 MIN_PYTHON_VERSION=6
 
 function install() {
-    version=$1
+    repobee_pip_uri=$1
 
     if [ -d "$REPOBEE_INSTALL_DIR" ]; then
         echo "Found RepoBee installation at $REPOBEE_INSTALL_DIR, attempting repair and upgrade ..."
     fi
 
     check_prerequisites
-    install_repobee $version
+    install_repobee "$repobee_pip_uri"
 }
 
 function check_prerequisites() {
@@ -58,7 +58,7 @@ function check_prerequisites() {
 }
 
 function install_repobee() {
-    version=$1
+    repobee_pip_uri="$1"
     echo "Installing RepoBee at $REPOBEE_INSTALL_DIR"
 
     # virtualenv works better in CI as it properly copies pip from another
@@ -78,8 +78,7 @@ function install_repobee() {
     ensure_pip_installed
 
     echo "Installing RepoBee $version"
-    repobee_pip_url="git+$REPOBEE_HTTPS_URL.git@$version"
-    REPOBEE_INSTALL_DIR="$REPOBEE_INSTALL_DIR" pip_install_quiet_failfast "$repobee_pip_url"
+    REPOBEE_INSTALL_DIR="$REPOBEE_INSTALL_DIR" pip_install_quiet_failfast "$repobee_pip_uri"
     create_repobee_executable
 
     if [ ! -f "$REPOBEE_INSTALLED_PLUGINS" ]; then
@@ -167,16 +166,16 @@ function create_repobee_executable() {
 
 function add_to_path() {
     printf "\n$REPOBEE_BIN_DIR is not on the PATH, so to run RepoBee you must type the full path to $REPOBEE_EXECUTABLE.\n"
-    echo "We can add $REPOBEE_BIN_DIR to your PATH by adding it to your profile file (e.g. .bashrc, .zshrc, config.fish, etc), and then you just need to type 'repobee' to run it."
-    echo "If you prefer to do this manually, and know how to do it, then that's absolutely fine, and you can always run RepoBee with the full path to $REPOBEE_EXECUTABLE"
-    echo "Do you want us to add $REPOBEE_BIN_DIR to your PATH? (y/n): "
+    echo "We can add try to add $REPOBEE_BIN_DIR to your PATH by adding it to your profile files (e.g. .bashrc, .zshrc, config.fish, etc), and then you just need to type 'repobee' to run it."
+    echo "If you know how to do this manually, then we recommend that you do so such that you get it the way you like it."
+    echo "Do you want us to add try to $REPOBEE_BIN_DIR to your PATH? [y/N]: "
 
     # careful with read, its options work differently in zsh and bash
     read confirm
 
     case "$confirm" in y|Y|yes|YES|yes)
             echo "Adding $REPOBEE_BIN_DIR to PATH"
-            "$REPOBEE_PYTHON" -m userpath prepend "$REPOBEE_BIN_DIR" || exit 1
+            "$REPOBEE_PYTHON" -m userpath append "$REPOBEE_BIN_DIR" || exit 1
             echo "$REPOBEE_BIN_DIR added to PATH, please start a new shell for the changes to take effect."
             ;;
         *) echo "Not adding $REPOBEE_BIN_DIR to PATH. Please do this manually."
@@ -229,18 +228,25 @@ Sorry, we don't support tab completion for any other shells at this time :(
 "
 }
 
-# find the version to install
-if [ $1 ]; then
-    version=$1
-else
-    version=$(get_latest_version)
-fi
+function resolve_repobee_pip_uri() {
+    # the optional argument can be either a version tag, or a local filepath
+    if [ $1 ]; then
+        if [ -d "$1" ]; then
+            repobee_pip_uri="$1"
+        else
+            repobee_pip_uri="git+$REPOBEE_HTTPS_URL.git@$version"
+        fi
+    else
+        repobee_pip_uri="git+$REPOBEE_HTTPS_URL.git@$(get_latest_version)"
+    fi
+    echo "$repobee_pip_uri"
+}
 
-install $version
+install "$(resolve_repobee_pip_uri $1)"
 create_autocomplete_scripts
 auto_complete_msg
 
 echo "
 RepoBee was installed successfully. To uninstall, simply remove the directory at $REPOBEE_INSTALL_DIR
-If you are having trouble, please visit the FAQ at https://repobee.readthedocs.io/troubleshoot.html
+If you are having trouble, please visit the FAQ at https://repobee.readthedocs.io/en/stable/faq.html
 "
