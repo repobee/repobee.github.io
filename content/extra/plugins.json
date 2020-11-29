@@ -3,6 +3,7 @@
         "description": "Plugin for RepoBee that runs JUnit4 on cloned repos",
         "url": "https://github.com/repobee/repobee-junit4",
         "versions": {
+            "v1.2.0": {},
             "v1.1.0": {},
             "v1.0.0": {},
             "v0.8.2": {},
