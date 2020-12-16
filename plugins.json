@@ -46,6 +46,7 @@
         "description": "A plugin for RepoBee that parses the JSON file produced by list-issues to report grades into a CSV file",
         "url": "https://github.com/repobee/repobee-csvgrades",
         "versions": {
+            "v0.2.1": {},
             "v0.2.0": {},
             "v0.1.0": {}
         }
