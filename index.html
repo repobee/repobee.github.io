@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>RepoBee</title>
+          <title>RepoBee - About RepoBee</title>
         <meta charset="utf-8" />
+
+
         <link href="https://repobee.org/theme/css/main.css" rel="stylesheet"/>
 </head>
 
@@ -15,6 +17,8 @@
 </a>
     </header><!-- /#banner -->
     <nav id="menu" class="middle-row-item"><ul>
+        <li class="active"><a href="https://repobee.org/">About RepoBee</a></li>
+        <li><a href="https://repobee.org/pages/contact.html">Contact</a></li>
     </ul>
         <a class="social" href="https://github.com/repobee/repobee">
             <img src="https://repobee.org/theme/images/github.png" alt="RepoBee on GitHub">
@@ -25,12 +29,54 @@
 
 	</nav><!-- /#menu -->
     <div class="primary-content middle-columns-content">
-<section id="content">
-<h2>All articles</h2>
+    
 
-<ol id="post-list">
-</ol><!-- /#posts-list -->
-</section><!-- /#content -->
+    <h2>About</h2>
+<p>RepoBee is an open source CLI tool that enables teachers to administrate large
+amounts of Git repositories on the GitHub and GitLab platforms. It automates
+tasks such as creating repositories for students (or groups) and filling them
+with content, batch cloning of student repositories as well as issue management
+and light peer review functionality. RepoBee can also be customized through
+plugins written in Python.</p>
+<p>For new users, the
+<a href="https://repobee.readthedocs.io/en/stable/userguide.html">User Guide</a> is a
+great place to start getting to know RepoBee and what it can do. For the more
+impatient folks out there, the complete CLI of the core application (i.e.
+plugins not included) is listed in the
+<a href="https://repobee.readthedocs.io/en/stable/cli.html">CLI Documentation</a>.</p>
+<h2>Install</h2>
+<p>RepoBee supports most UNIX-like environments. That includes <strong>macOS</strong>,
+<strong>Windows</strong> through
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">WSL</a> and all
+<strong>Linux</strong> distributions. Other UNIX-like environments may work, but they are
+not officially supported.</p>
+<blockquote>
+<p><strong>Upgrading from RepoBee 2.x?</strong> <a href="https://github.com/repobee/repobee/releases/tag/v3.0.1">Please see the v3.0.1 release notes before
+proceeding</a></p>
+</blockquote>
+<p>Installing RepoBee is simple, just execute the install script!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># for bash</span>
+bash &lt;<span class="o">(</span>curl -s https://repobee.org/install.sh<span class="o">)</span>
+
+<span class="c1"># for zsh</span>
+zsh &lt;<span class="o">(</span>curl -s https://repobee.org/install.sh<span class="o">)</span>
+</code></pre></div>
+
+<p>Follow the instructions from the install script and you should be good to go.
+It will install RepoBee into the <code>~/.repobee</code> directory for you. Visit <a href="https://repobee.readthedocs.io/en/stable/install.html">the
+install documentation</a>
+for more elaborate instructions.</p>
+<blockquote>
+<p><strong>Note:</strong> Even if your primary shell is not <code>bash</code> or <code>zsh</code>, you need to
+install RepoBee with one of them. Then you can execute RepoBee with most
+shells.</p>
+</blockquote>
+<h2>Uninstall</h2>
+<p>Simply remove the <code>~/.repobee</code> directory. Depending on if you chose to modify
+your <code>.bashrc</code> or <code>.zshrc</code> or similar during install, or have done so manually,
+you may also need to remove a few lines from these files to remove all traces
+of RepoBee.</p>
+
     </div>
     <footer id="contentinfo" class="middle-row-item">
             <address id="about" class="vcard body">
