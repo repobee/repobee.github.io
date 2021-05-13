@@ -30,6 +30,7 @@
         "description": "A RepoBee plugin for opening feedback issues in on student issue trackers",
         "url": "https://github.com/repobee/repobee-feedback",
         "versions": {
+            "v0.6.3": {},
             "v0.6.2": {},
             "v0.6.1": {},
             "v0.6.0": {},

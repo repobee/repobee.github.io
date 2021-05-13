@@ -32,28 +32,18 @@
     
 
     <h2>About</h2>
-<p>RepoBee is a command line tool that allows teachers and teaching assistants to
-work with large amounts of student Git repositories on the GitHub, GitLab and
-Gitea platforms (cloud and self-hosted). The archetypical use case is to
-automate creation of student repositories based on template repositories, that
-can contain for example instructions and skeleton code. Given any number of
-template repositories, creating a copy for each student or group is
-<a href="https://docs.repobee.org/en/stable/repos.html#set-up-student-repositories-the-setup-action">just one command away</a>.
-RepoBee also has functionality for
-<a href="https://docs.repobee.org/en/stable/repos.html#updating-student-repositories-the-update-action">updating student repos</a>,
-<a href="https://docs.repobee.org/en/stable/repos.html#cloning-repos-in-bulk-the-clone-action">batch cloning of student repos</a>,
-<a href="https://docs.repobee.org/en/stable/issues.html">opening, closing and listing issues</a>,
-<a href="https://docs.repobee.org/en/stable/peer.html">no-blind</a> and
-<a href="https://docs.repobee.org/en/stable/peer.html#double-blind-peer-review">double-blind</a>
-peer review, and much more!</p>
-<p>In addition, RepoBee features a powerful
-<a href="https://docs.repobee.org/en/stable/plugins.html">plugin system</a> that allows
-users to either use existing plugins, or
-<a href="https://docs.repobee.org/en/stable/repobee_plug/index.html">write their own</a>.
-Plugins can do a wide range of things, including making RepoBee compatible with
-multiple hosting platforms (GitHub, GitLab, Gitea), providing compatibility
-with repositories managed by GitHub Classroom, or running JUnit4 test classes
-on cloned student repositories.</p>
+<p>RepoBee is an open source CLI tool that enables teachers to administrate large
+amounts of Git repositories on the GitHub and GitLab platforms. It automates
+tasks such as creating repositories for students (or groups) and filling them
+with content, batch cloning of student repositories as well as issue management
+and light peer review functionality. RepoBee can also be customized through
+plugins written in Python.</p>
+<p>For new users, the
+<a href="https://repobee.readthedocs.io/en/stable/userguide.html">User Guide</a> is a
+great place to start getting to know RepoBee and what it can do. For the more
+impatient folks out there, the complete CLI of the core application (i.e.
+plugins not included) is listed in the
+<a href="https://repobee.readthedocs.io/en/stable/cli.html">CLI Documentation</a>.</p>
 <h2>Install</h2>
 <p>RepoBee supports most UNIX-like environments. That includes <strong>macOS</strong>,
 <strong>Windows</strong> through
@@ -61,7 +51,8 @@ on cloned student repositories.</p>
 <strong>Linux</strong> distributions. Other UNIX-like environments may work, but they are
 not officially supported.</p>
 <blockquote>
-<p><strong>Don't want to install?</strong> <a href="https://docs.repobee.org/en/stable/docker.html">We also offer a fully featured Docker image!</a></p>
+<p><strong>Upgrading from RepoBee 2.x?</strong> <a href="https://github.com/repobee/repobee/releases/tag/v3.0.1">Please see the v3.0.1 release notes before
+proceeding</a></p>
 </blockquote>
 <p>Installing RepoBee is simple, just execute the install script!</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># for bash</span>
