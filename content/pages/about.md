@@ -31,7 +31,10 @@ on cloned student repositories.
 
 ## Demo video
 
-[Click here to go to the demo video!](/media/repobee-demo.mp4)
+<video controls>
+  <source src="/media/repobee-demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Install
 RepoBee supports most UNIX-like environments. That includes **macOS**,
