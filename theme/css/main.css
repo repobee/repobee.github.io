@@ -126,3 +126,8 @@ nav li a {
 .social:hover {
     background: #B3E5FC;
 }
+
+.video {
+    width: 100%;
+    resize: both;
+}
