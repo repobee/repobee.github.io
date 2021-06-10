@@ -31,11 +31,13 @@ STATIC_PATHS = [
     "favicon.ico",
     "extra/plugins.json",
     "extra/install.sh",
+    "extra/repobee-demo.mp4",
 ]
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
     "extra/plugins.json": {"path": "plugins.json"},
     "extra/install.sh": {"path": "install.sh"},
+    "extra/repobee-demo.mp4": {"path": "media/repobee-demo.mp4"},
 }
 
 # Social widget

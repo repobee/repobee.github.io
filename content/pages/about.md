@@ -29,6 +29,10 @@ multiple hosting platforms (GitHub, GitLab, Gitea), providing compatibility
 with repositories managed by GitHub Classroom, or running JUnit4 test classes
 on cloned student repositories.
 
+## Demo video
+
+[Click here to go to the demo video!](/media/repobee-demo.mp4)
+
 ## Install
 RepoBee supports most UNIX-like environments. That includes **macOS**,
 **Windows** through
