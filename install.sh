@@ -21,7 +21,7 @@ REPOBEE_COMPLETION="$REPOBEE_INSTALL_DIR/completion"
 REPOBEE_BASH_COMPLETION="$REPOBEE_COMPLETION/bash_completion.sh"
 REGISTER_PYTHON_ARGCOMPLETE="$REPOBEE_INSTALL_DIR/env/bin/register-python-argcomplete"
 
-MIN_PYTHON_VERSION=6
+MIN_PYTHON_VERSION=8
 
 function install() {
     repobee_pip_uri=$1
@@ -35,11 +35,11 @@ function install() {
 }
 
 function check_prerequisites() {
-    # check that Python 3.6+, pip and Git are installed
+    # check that Python 3.8+, pip and Git are installed
     installed_python=$(find_python)
     if [ -z "$installed_python" ]; then
         printf "\nCannot find any compatible version of Python installed.\n"
-        echo "Please install Python 3.6 or higher and then rerun this script."
+        echo "Please install Python 3.8 or higher and then rerun this script."
         echo "See https://www.python.org/downloads/ for a Python installer."
         exit 1
     else
@@ -81,9 +81,9 @@ function install_repobee() {
     REPOBEE_INSTALL_DIR="$REPOBEE_INSTALL_DIR" pip_install_quiet_failfast "$repobee_pip_uri"
     create_repobee_executable
 
-    if [ ! -f "$REPOBEE_INSTALLED_PLUGINS" ]; then
-        echo "{}" > "$REPOBEE_INSTALLED_PLUGINS"
-    fi
+    # we intentionally clobber the installed plugins file to fix installations
+    # broken by failing or missing plugins
+    echo "{}" > "$REPOBEE_INSTALLED_PLUGINS"
 
     echo "Checking PATH"
     pip_install_quiet_failfast userpath
@@ -93,7 +93,7 @@ function install_repobee() {
 
 function find_python() {
     # Find an appropriate python executable
-    for exec_suffix in "3.9" "3.8" "3.7" "3.6" "3" ""; do
+    for exec_suffix in "3.11" "3.10" "3.9" "3.8" "3" ""; do
         python_exec="python$exec_suffix"
         minor_version=$(get_minor_python3_version "$python_exec")
         if [ "$minor_version" -ge "$MIN_PYTHON_VERSION" ]; then
@@ -204,27 +204,10 @@ $($REGISTER_PYTHON_ARGCOMPLETE repobee)
 function auto_complete_msg() {
     echo "
 ### TAB COMPLETION INSTRUCTIONS ###
-RepoBee supports tab completion (aka auto completion, shell completion, etc), but you need to do just a little bit of the legwork yourself. To activate tab completion for RepoBee, do the following (depending on your shell):
 
-### bash ###
-Add the following to your ~/.bashrc:
+To enable tab completion, see https://docs.repobee.org/en/stable/install.html#tab-completion
 
-    source \"$REPOBEE_BASH_COMPLETION\"
-
-### zsh ###
-Add the following to your ~/.zshrc:
-
-    autoload -Uz compinit
-    compinit
-    autoload -Uz bashcompinit
-    bashcompinit
-    source \"$REPOBEE_BASH_COMPLETION\"
-
-IMPORTANT: You should _not_ have multiple occurences of compinit and bashcompinit in your .zshrc, they should be loaded and executed only once. If you already have them in there, just make sure to source the RepoBee bash completion script after compinit and bashcompinit have been called.
-
-### other shells ###
-Sorry, we don't support tab completion for any other shells at this time :(
-
+###################################
 "
 }
 
